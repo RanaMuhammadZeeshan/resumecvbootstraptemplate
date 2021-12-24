@@ -74,11 +74,6 @@ export default function Home() {
       skillName: 'Science and Technology',
       iconNameText: 'School Name',
     },
-    {
-      iconName: faGraduationCap,
-      skillName: 'Science and Technology',
-      iconNameText: 'School Name',
-    },
   ])
 
   return (

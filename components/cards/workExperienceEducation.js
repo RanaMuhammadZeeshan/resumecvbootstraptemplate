@@ -1,9 +1,11 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import WorkExperienceEducationCardBody from './workExperienceEducationCardBody'
 
 function WorkExperienceEducation({ sectionName, workExperienceAndEducation }) {
   const [buttonToggleWork, setButtonToggleWork] = useState(false)
   const [buttonToggleEducation, setButtonToggleEducation] = useState(false)
+  let testfirst3 = []
+  let testRest = []
 
   const showAllContentWork = () => {
     setButtonToggleWork(!buttonToggleWork)
@@ -13,53 +15,54 @@ function WorkExperienceEducation({ sectionName, workExperienceAndEducation }) {
     setButtonToggleEducation(!buttonToggleEducation)
   }
 
+  const renderWorkExperienceAndEducation = () => {
+    for (let i = 0; i < workExperienceAndEducation.length; i++) {
+      if (i <= 2) {
+        testfirst3.push(
+          <WorkExperienceEducationCardBody
+            iconName={workExperienceAndEducation[i].iconName}
+            skillName={workExperienceAndEducation[i].skillName}
+            iconNameText={workExperienceAndEducation[i].iconNameText}
+          />
+        )
+      } else {
+        testRest.push(
+          <WorkExperienceEducationCardBody
+            iconName={workExperienceAndEducation[i].iconName}
+            skillName={workExperienceAndEducation[i].skillName}
+            iconNameText={workExperienceAndEducation[i].iconNameText}
+          />
+        )
+      }
+    }
+  }
+
   return (
     <div className='card mb-4'>
       <h2 className='card-header text-center'>{sectionName}</h2>
       <div className='card-body'>
-        <WorkExperienceEducationCardBody
-          iconName={workExperienceAndEducation[0].iconName}
-          skillName={workExperienceAndEducation[0].skillName}
-          iconNameText={workExperienceAndEducation[0].iconNameText}
-        />
+        {renderWorkExperienceAndEducation()}
+        {
+          <>
+            {testfirst3.map((item, index) => (
+              <div key={index}>{item}</div>
+            ))}
 
-        <WorkExperienceEducationCardBody
-          iconName={workExperienceAndEducation[1].iconName}
-          skillName={workExperienceAndEducation[1].skillName}
-          iconNameText={workExperienceAndEducation[1].iconNameText}
-        />
+            <div
+              className='collapse'
+              id={`${
+                sectionName === 'Work Experience'
+                  ? 'collapse-work'
+                  : 'collapse-education'
+              }`}
+            >
+              {testRest.map((item, index) => (
+                <div key={index}>{item}</div>
+              ))}
+            </div>
+          </>
+        }
 
-        <WorkExperienceEducationCardBody
-          iconName={workExperienceAndEducation[2].iconName}
-          skillName={workExperienceAndEducation[2].skillName}
-          iconNameText={workExperienceAndEducation[2].iconNameText}
-        />
-        <div
-          className='collapse'
-          id={`${
-            sectionName === 'Work Experience'
-              ? 'collapse-work'
-              : 'collapse-education'
-          }`}
-        >
-          <WorkExperienceEducationCardBody
-            iconName={workExperienceAndEducation[3].iconName}
-            skillName={workExperienceAndEducation[3].skillName}
-            iconNameText={workExperienceAndEducation[3].iconNameText}
-          />
-
-          <WorkExperienceEducationCardBody
-            iconName={workExperienceAndEducation[4].iconName}
-            skillName={workExperienceAndEducation[4].skillName}
-            iconNameText={workExperienceAndEducation[4].iconNameText}
-          />
-
-          <WorkExperienceEducationCardBody
-            iconName={workExperienceAndEducation[5].iconName}
-            skillName={workExperienceAndEducation[5].skillName}
-            iconNameText={workExperienceAndEducation[5].iconNameText}
-          />
-        </div>
         {sectionName === 'Work Experience' ? (
           <button
             className='btn btn-sm btn-outline-primary'
