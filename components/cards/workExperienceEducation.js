@@ -3,9 +3,14 @@ import WorkExperienceEducationCardBody from './workExperienceEducationCardBody'
 
 function WorkExperienceEducation({ sectionName, workExperienceAndEducation }) {
   const [buttonToggleWork, setButtonToggleWork] = useState(false)
+  const [buttonToggleEducation, setButtonToggleEducation] = useState(false)
 
   const showAllContentWork = () => {
     setButtonToggleWork(!buttonToggleWork)
+  }
+
+  const showAllContentEducation = () => {
+    setButtonToggleEducation(!buttonToggleEducation)
   }
 
   return (
@@ -29,7 +34,14 @@ function WorkExperienceEducation({ sectionName, workExperienceAndEducation }) {
           skillName={workExperienceAndEducation[2].skillName}
           iconNameText={workExperienceAndEducation[2].iconNameText}
         />
-        <div className='collapse' id='collapse-work'>
+        <div
+          className='collapse'
+          id={`${
+            sectionName === 'Work Experience'
+              ? 'collapse-work'
+              : 'collapse-education'
+          }`}
+        >
           <WorkExperienceEducationCardBody
             iconName={workExperienceAndEducation[3].iconName}
             skillName={workExperienceAndEducation[3].skillName}
@@ -48,16 +60,29 @@ function WorkExperienceEducation({ sectionName, workExperienceAndEducation }) {
             iconNameText={workExperienceAndEducation[5].iconNameText}
           />
         </div>
-        <button
-          className='btn btn-sm btn-outline-primary'
-          data-bs-toggle='collapse'
-          data-bs-target='#collapse-work'
-          aria-expanded='false'
-          aria-controls='collapse-work'
-          onClick={() => showAllContentWork()}
-        >
-          {buttonToggleWork ? 'Hide' : 'Show'} All
-        </button>
+        {sectionName === 'Work Experience' ? (
+          <button
+            className='btn btn-sm btn-outline-primary'
+            data-bs-toggle='collapse'
+            data-bs-target='#collapse-work'
+            aria-expanded='false'
+            aria-controls='collapse-work'
+            onClick={() => showAllContentWork()}
+          >
+            {buttonToggleWork ? 'Hide' : 'Show'} All
+          </button>
+        ) : (
+          <button
+            className='btn btn-sm btn-outline-primary'
+            data-bs-toggle='collapse'
+            data-bs-target='#collapse-education'
+            aria-expanded='false'
+            aria-controls='collapse-work'
+            onClick={() => showAllContentEducation()}
+          >
+            {buttonToggleEducation ? 'Hide' : 'Show'} All
+          </button>
+        )}
       </div>
     </div>
   )

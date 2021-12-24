@@ -6,6 +6,10 @@ import {
   faMedium,
   faUber,
 } from '@fortawesome/free-brands-svg-icons'
+import {
+  faGraduationCap,
+  faUniversity,
+} from '@fortawesome/free-solid-svg-icons'
 import { useState } from 'react'
 import MainCard from '../components/cards/maincard'
 import WorkExperienceEducation from '../components/cards/workExperienceEducation'
@@ -44,6 +48,39 @@ export default function Home() {
     },
   ])
 
+  const [education, setEducation] = useState([
+    {
+      iconName: faUniversity,
+      skillName: 'BS In Software Engineering',
+      iconNameText: 'University Name',
+    },
+    {
+      iconName: faUniversity,
+      skillName: 'High School',
+      iconNameText: 'High School Name',
+    },
+    {
+      iconName: faUniversity,
+      skillName: 'Secondary School',
+      iconNameText: 'Secondary School Name',
+    },
+    {
+      iconName: faGraduationCap,
+      skillName: 'Information Technology',
+      iconNameText: 'College Name',
+    },
+    {
+      iconName: faGraduationCap,
+      skillName: 'Science and Technology',
+      iconNameText: 'School Name',
+    },
+    {
+      iconName: faGraduationCap,
+      skillName: 'Science and Technology',
+      iconNameText: 'School Name',
+    },
+  ])
+
   return (
     <main className='bg-light'>
       <div className='container mt-4'>
@@ -56,7 +93,7 @@ export default function Home() {
             />
             <WorkExperienceEducation
               sectionName={'Education'}
-              workExperienceAndEducation={workExperience}
+              workExperienceAndEducation={education}
             />
           </div>
         </div>
