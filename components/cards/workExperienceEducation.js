@@ -4,8 +4,8 @@ import WorkExperienceEducationCardBody from './workExperienceEducationCardBody'
 function WorkExperienceEducation({ sectionName, workExperienceAndEducation }) {
   const [buttonToggleWork, setButtonToggleWork] = useState(false)
   const [buttonToggleEducation, setButtonToggleEducation] = useState(false)
-  let testfirst3 = []
-  let testRest = []
+  let first3 = []
+  let rest = []
 
   const showAllContentWork = () => {
     setButtonToggleWork(!buttonToggleWork)
@@ -18,7 +18,7 @@ function WorkExperienceEducation({ sectionName, workExperienceAndEducation }) {
   const renderWorkExperienceAndEducation = () => {
     for (let i = 0; i < workExperienceAndEducation.length; i++) {
       if (i <= 2) {
-        testfirst3.push(
+        first3.push(
           <WorkExperienceEducationCardBody
             iconName={workExperienceAndEducation[i].iconName}
             skillName={workExperienceAndEducation[i].skillName}
@@ -26,7 +26,7 @@ function WorkExperienceEducation({ sectionName, workExperienceAndEducation }) {
           />
         )
       } else {
-        testRest.push(
+        rest.push(
           <WorkExperienceEducationCardBody
             iconName={workExperienceAndEducation[i].iconName}
             skillName={workExperienceAndEducation[i].skillName}
@@ -44,7 +44,7 @@ function WorkExperienceEducation({ sectionName, workExperienceAndEducation }) {
         {renderWorkExperienceAndEducation()}
         {
           <>
-            {testfirst3.map((item, index) => (
+            {first3.map((item, index) => (
               <div key={index}>{item}</div>
             ))}
 
@@ -56,7 +56,7 @@ function WorkExperienceEducation({ sectionName, workExperienceAndEducation }) {
                   : 'collapse-education'
               }`}
             >
-              {testRest.map((item, index) => (
+              {rest.map((item, index) => (
                 <div key={index}>{item}</div>
               ))}
             </div>

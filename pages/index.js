@@ -13,6 +13,7 @@ import {
 import { useState } from 'react'
 import MainCard from '../components/cards/maincard'
 import WorkExperienceEducation from '../components/cards/workExperienceEducation'
+import Testimonial from '../components/testimonials/testimonial'
 
 export default function Home() {
   const [workExperience, setWorkExperience] = useState([
@@ -90,6 +91,7 @@ export default function Home() {
               sectionName={'Education'}
               workExperienceAndEducation={education}
             />
+            <Testimonial />
           </div>
         </div>
       </div>
