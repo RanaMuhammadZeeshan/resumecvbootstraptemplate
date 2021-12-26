@@ -13,6 +13,7 @@ import {
 import { useState } from 'react'
 import MainCard from '../components/cards/maincard'
 import WorkExperienceEducation from '../components/cards/workExperienceEducation'
+import ContactInfo from '../components/contactInfo/contactInfo'
 import Testimonial from '../components/testimonials/testimonial'
 
 export default function Home() {
@@ -92,6 +93,9 @@ export default function Home() {
               workExperienceAndEducation={education}
             />
             <Testimonial />
+          </div>
+          <div className='col-12 col-lg-4'>
+            <ContactInfo />
           </div>
         </div>
       </div>
